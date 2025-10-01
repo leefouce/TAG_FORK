@@ -134,6 +134,9 @@ public abstract class AbstractPlayer {
      * Initialize agent given an observation of the initial game state.
      * e.g. load weights, initialize neural network
      *
+     * called at the start of the game with a copy of the initial game state. Override to initialize
+     * the agent before the game starts
+     *
      * @param gameState observation of the initial game state
      */
     public void initializePlayer(AbstractGameState gameState) {
@@ -143,6 +146,10 @@ public abstract class AbstractPlayer {
      * Finalize agent given an observation of the final game state.
      * e.g. store variables after training, modify weights, etc.
      *
+     * called once the game is over, with a copy of the final game state. Override to take care
+     * of different things (i.e. logging, or updating weights for an AI learning algorithm) once the game has
+     * concluded
+     *
      * @param gameState observation of the final game state
      */
     public void finalizePlayer(AbstractGameState gameState) {
@@ -150,6 +157,11 @@ public abstract class AbstractPlayer {
 
     /**
      * Receive an updated game state for which it is not required to respond with an action.
+     *
+     * in some cases the player only has a single or no actions to choose from (think
+     * of a game where you have no more actions to play but others are still taking turns). In these cases, instead
+     * of calling getAction(), the game calls registerUpdatedObservation(). This function lets the player know
+     * of the current game state, so it can update its beliefs and internal members accordingly.
      *
      * @param gameState observation of the current game state
      */

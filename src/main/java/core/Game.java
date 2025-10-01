@@ -34,6 +34,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import evaluation.RunGames;
+
 
 public class Game {
 
@@ -695,28 +697,54 @@ public class Game {
      * 5. Mode of running
      * and then run this class.
      */
+
     public static void main(String[] args) {
-        String gameType = Utils.getArg(args, "game", "Chess");
-        boolean useGUI = Utils.getArg(args, "gui", true);
-        int turnPause = Utils.getArg(args, "turnPause", 0);
-        long seed = Utils.getArg(args, "seed", System.currentTimeMillis());
-        ActionController ac = new ActionController();
-
-        /* Set up players for the game */
-        ArrayList<AbstractPlayer> players = new ArrayList<>();
-        players.add(new RandomPlayer());
-    //    players.add(new RandomPlayer());
-    //    players.add(new BasicMCTSPlayer());
-//        players.add(new OSLAPlayer());
-//        players.add(new RMHCPlayer());
-        // players.add(new HumanGUIPlayer(ac));
-
-
-        /* Game parameter configuration. Set to null to ignore and use default parameters */
-        String gameParams = null;
-
-        /* Run! */
-        runOne(GameType.valueOf(gameType), gameParams, players, seed, false, null, useGUI ? ac : null, turnPause);
+        RunGames.main(args);
     }
 
+
+//    public static void main(String[] args) {
+//        String gameType = Utils.getArg(args, "game", "Pandemic");
+//        boolean useGUI = Utils.getArg(args, "gui", true);
+//        int turnPause = Utils.getArg(args, "turnPause", 0);
+//        long seed = Utils.getArg(args, "seed", System.currentTimeMillis());
+//        ActionController ac = new ActionController();
+//
+//        /* Set up players for the game */
+//        ArrayList<AbstractPlayer> players = new ArrayList<>();
+//        players.add(new HumanGUIPlayer ( ac ));
+//        players.add(new RandomPlayer());
+//        players.add(new BasicMCTSPlayer());
+//        players.add(new OSLAPlayer());
+//    //    players.add(new RandomPlayer());
+////        players.add(new BasicMCTSPlayer());
+////        players.add(new OSLAPlayer());
+////        players.add(new RMHCPlayer());
+//        // players.add(new HumanGUIPlayer(ac));
+//
+//
+//        /* Game parameter configuration. Set to null to ignore and use default parameters */
+//        String gameParams = null;
+//
+//        /* Run! */
+////        runOne(GameType.valueOf(gameType), gameParams, players, seed, false, null, useGUI ? ac : null, turnPause);
+//    }
+//    public static void main(String[] args){
+//        String gameType = Utils.getArg(args, "game", "Uno");
+//        boolean useGUI = Utils.getArg(args, "useGUI", true);
+//        int turnPause = Utils.getArg(args, "turnPause", 0);
+//        Long seed =  Utils.getArg(args, "seed", System.currentTimeMillis());
+//        ActionController ac = new ActionController();
+//
+//        ArrayList<AbstractPlayer> players = new ArrayList<>();
+//        players.add(new RandomPlayer());
+//        players.add(new RandomPlayer());
+//        players.add(new MCTSPlayer());
+//
+//        String gameParams = null;
+//
+//        System.out.println();
+//
+//        runOne(GameType.valueOf(gameType), gameParams, players, seed, false, null, useGUI ? ac : null, turnPause);
+//    }
 }

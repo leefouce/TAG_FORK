@@ -38,3 +38,5 @@ src/pytag/env/
 metrics/out/*
 treeRecorder*
 .vscode/*
+
+.DS_Store/*
